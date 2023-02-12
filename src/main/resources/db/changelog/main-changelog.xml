@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
     <changeSet id="1676232271296-1" author="relfadel">
-        <createTable tableName="case">
+        <createTable tableName="cases">
             <column name="case_id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
