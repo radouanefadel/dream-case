@@ -23,9 +23,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.hibernate:hibernate-validator:7.0.0.Final'
 	implementation 'org.liquibase:liquibase-core'
+	implementation 'org.mapstruct:mapstruct:1.4.0.Final'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.0.Final'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
