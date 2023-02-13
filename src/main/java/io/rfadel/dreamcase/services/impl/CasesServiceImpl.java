@@ -5,6 +5,7 @@ import io.rfadel.dreamcase.data.dtos.CreateOrUpdateCaseDto;
 import io.rfadel.dreamcase.data.entities.Case;
 import io.rfadel.dreamcase.data.mappers.CaseMapper;
 import io.rfadel.dreamcase.data.repositories.CaseRepository;
+import io.rfadel.dreamcase.exceptions.CaseNotFoundException;
 import io.rfadel.dreamcase.services.CasesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,15 @@ public class CasesServiceImpl implements CasesService {
     }
 
     @Override
-    public ResponseEntity<CaseInfoDto> findOne(long id) {
-        return null;
+    public ResponseEntity<CaseInfoDto> findOne(final long id) {
+        return this.repository.findById(id).map(
+                caseItem -> {
+                    return new ResponseEntity(
+                            CaseMapper.INSTANCE.toCaseInfoDto(caseItem),
+                            HttpStatus.OK
+                    );
+                }
+        ).orElseThrow(() -> new CaseNotFoundException(id));
     }
 
     @Override
